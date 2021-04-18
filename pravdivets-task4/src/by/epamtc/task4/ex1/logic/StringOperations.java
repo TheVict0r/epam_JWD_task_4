@@ -41,6 +41,10 @@ public class StringOperations {
 	
 	//--2-В тексте после буквы Р, если она не последняя в слове, 
 	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
+	public static String fixAtoO(String text) {
+		
+		return null;
+	}
 
 	
 	
@@ -76,6 +80,10 @@ public class StringOperations {
 	
 	//--4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
+	public static String remove(String text) {
+		
+		return null;
+	}
 
 	
 	
