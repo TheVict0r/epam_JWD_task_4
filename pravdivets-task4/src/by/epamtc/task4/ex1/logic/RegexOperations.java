@@ -25,6 +25,19 @@ public class RegexOperations {
 		return null;
 	}
 
+	//-2-В тексте после буквы Р, если она не последняя в слове, 
+	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
+	public static String fixAtoO(String text) {
+		
+		return null;
+	}
+	
+	//-3-В тексте слова заданной длины заменить указанной подстрокой, 
+	//длина которой может не совпадать с длиной слова. 
+	public static String replaseByLength(String text, int wordLength, String substring) {
+		
+		return null;
+	}
 	
 	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
@@ -42,7 +55,11 @@ public class RegexOperations {
 		return result;
 	}
 	
-	
+	//-5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	public static String deleteСonsonantWords(String text, int wordLength) {
+		
+		return null;
+	}
 	
 	
 }

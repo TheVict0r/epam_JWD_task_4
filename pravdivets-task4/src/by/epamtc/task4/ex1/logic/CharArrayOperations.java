@@ -2,7 +2,7 @@ package by.epamtc.task4.ex1.logic;
 
 public class CharArrayOperations {
 
-		// +1-В каждом слове k-ю букву заменить заданным символом.
+		// +-1-В каждом слове k-ю букву заменить заданным символом.
 		// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		if (text == null) {
@@ -53,7 +53,7 @@ public class CharArrayOperations {
 		return result;
 	}
 	
-	//--3-В тексте слова заданной длины заменить указанной подстрокой, 
+	//-3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
 	public static String replaseByLength(String text, int wordLength, String substring) {
 		
@@ -91,8 +91,20 @@ public class CharArrayOperations {
 	}
 	
 	
-	//4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
+	//-4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
+	public static String remove(String text) {
+		
+		return null;
+	}
+	
+	
+	//-5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	public static String deleteСonsonantWords(String text, int wordLength) {
+		
+		return null;
+	}
+
 	
 	
 }
