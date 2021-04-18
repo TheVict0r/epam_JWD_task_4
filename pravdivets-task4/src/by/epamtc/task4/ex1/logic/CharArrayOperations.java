@@ -14,10 +14,12 @@ public class CharArrayOperations {
 			//пока не реализовано
 		}
 
-		if (k > text.length()) {
-			return text;
-		}
-
+		//=========================
+		//||НЕ УЧЁЛ ОТДЕЛЬНЫЕ СЛОВА
+		//=========================
+		
+		
+		
 		char[] array = text.toCharArray();
 
 		for(int i = k - 1; i < array.length; i += k) {

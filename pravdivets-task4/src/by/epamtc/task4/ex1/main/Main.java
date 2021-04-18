@@ -24,7 +24,8 @@ public class Main {
 		
 		String text = "В начале 2020 года, $ & по данным Белстата, в Белараси проживало 9 410 259 человек, а за двенадцать месяцев количество населения в нашей стране снизилось до 9 349 645 жителей";
 		
-		System.out.println(StringOperations.deleteСonsonantWords(text, 6));
+//		System.out.println(StringOperations.deleteСonsonantWords(text, 6));
+		System.out.println(StringOperations.replaceByStep(text, 3, 'Ы'));
 		
 //		System.out.println(CharArrayOperations.fixAtoO(text));
 //

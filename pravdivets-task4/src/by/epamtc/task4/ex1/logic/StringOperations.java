@@ -1,34 +1,43 @@
 package by.epamtc.task4.ex1.logic;
 
 public class StringOperations {
-	
-	//--1- В каждом слове k-ю букву заменить заданным символом.
+
+	// +1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
-		if(text == null) {
-			//throw new NullStringException(string);
-			//пока не реализовано
+		if (text == null) {
+			// throw new NullStringException(string);
+			// пока не реализовано
 		}
-		if(k <= 0 ) {
-			//throw new IncorrectStepException("Step can't be less than zero");
-			//пока не реализовано
+		if (k <= 0) {
+			// throw new IncorrectStepException("Step can't be less than zero");
+			// пока не реализовано
 		}
-		
-		if(k > text.length()) {
-			return text;
+
+		String[] array = text.split(" ");
+		StringBuilder resultBuilder = new StringBuilder();
+
+		for (String word : array) {
+			if (word.length() >= k) {
+				StringBuilder builder = new StringBuilder(word);
+				for (int i = k - 1; i < word.length(); i += k) {
+
+					builder.replace(i, i + 1, String.valueOf(ch));
+
+				}
+				word = builder.toString();
+			} else {
+				resultBuilder.append(word).append(" ");
+				continue;
+			}
+			resultBuilder.append(word).append(" ");
 		}
-		
-		String result = "";
-		
-		for(int i = k - 1; i < text.length(); i += k) {
-			char chSource = text.charAt(i);
-			//result = string.
-		}
-		
-		
+
+		String result;
+		result = resultBuilder.toString();
+
 		return result;
 	}
-	
 	
 	//+3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
