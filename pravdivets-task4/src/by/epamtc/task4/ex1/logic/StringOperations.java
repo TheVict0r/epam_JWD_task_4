@@ -69,9 +69,8 @@ public class StringOperations {
 			//пока не реализовано
 		}
 
-		String result = "";
-		
 		String consonant = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщ";
+		StringBuilder builder = new StringBuilder();
 		
 		String[] array = text.split(" ");
 		for(int i = 0; i < array.length; i++) {
@@ -83,8 +82,12 @@ public class StringOperations {
 				}
 				
 			}
-			result = result.concat(array[i]).concat(" ");
+			builder.append(array[i]).append(" ");
 		}
+		
+		String result;
+		result = builder.toString().replaceAll("   ", " ");
+		
 		return result;
 	}
 	
