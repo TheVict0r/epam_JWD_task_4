@@ -13,23 +13,22 @@ public class Main {
 		
 //		String text = "";
 //		
-//		//text = TextDataScanner.enterStringFromConsole();
+		//text = TextDataScanner.enterStringFromConsole();
 //		try {
 //			text = TextDataScanner.enterStringFromFile("C:\\file.txt");
 //		} catch (FileNotFoundException e) {
-//			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
 //		
 //		System.out.println(text);
 		
-		String text = "В начале 2020 года, $ & по данным Белстата, в Беларуси проживало 9 410 259 человек, а за двенадцать месяцев количество населения в нашей стране снизилось до 9 349 645 жителей";
+		String text = "В начале 2020 года, $ & по данным Белстата, в Белараси проживало 9 410 259 человек, а за двенадцать месяцев количество населения в нашей стране снизилось до 9 349 645 жителей";
 		
 		System.out.println(StringOperations.deleteСonsonantWords(text, 6));
 		
-		//System.out.println(CharArrayOperations.fixAtoO(text));
-
-		//System.out.println(RegexOperations.remove(text));
+//		System.out.println(CharArrayOperations.fixAtoO(text));
+//
+//		System.out.println(RegexOperations.remove(text));
 		
 		
 		

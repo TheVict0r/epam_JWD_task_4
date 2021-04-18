@@ -58,7 +58,7 @@ public class StringOperations {
 			return result;
 	}
 	
-	//Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	//+5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		if (text == null) {
 			// throw new NullStringException(string);
@@ -78,7 +78,7 @@ public class StringOperations {
 			if(array[i].length() == wordLength) {
 				for(int j = 0; j < consonant.length(); j++) {
 					if(array[i].charAt(0) == consonant.charAt(j)) {
-						array[i] = "";
+						array[i] = " ";
 					}
 				}
 				
