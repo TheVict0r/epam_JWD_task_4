@@ -6,7 +6,7 @@ public class StringOperations {
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			// пока не реализовано
 		}
 		if (k <= 0) {
@@ -43,7 +43,7 @@ public class StringOperations {
 	// ошибочно напечатана буква А вместо О. Внести исправления в текст.
 	public static String fixAtoO(String text) {
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			// пока не реализовано
 		}
 			//кириллица
@@ -61,7 +61,7 @@ public class StringOperations {
 	public static String replaceByLength(String text, int wordLength, String substring) {
 		
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			//пока не реализовано
 		}
 
@@ -90,7 +90,7 @@ public class StringOperations {
 	public static String remove(String text) {
 	
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			//пока не реализовано
 		}
 
@@ -114,7 +114,7 @@ public class StringOperations {
 	//+5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			//пока не реализовано
 		}
 		if(wordLength <= 0) {
@@ -122,14 +122,14 @@ public class StringOperations {
 			//пока не реализовано
 		}
 
-		String consonant = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщ";
+		final String CONSONANT = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщ";
 		StringBuilder builder = new StringBuilder();
 		
 		String[] array = text.split(" ");
 		for(int i = 0; i < array.length; i++) {
 			if(array[i].length() == wordLength) {
-				for(int j = 0; j < consonant.length(); j++) {
-					if(array[i].charAt(0) == consonant.charAt(j)) {
+				for(int j = 0; j < CONSONANT.length(); j++) {
+					if(array[i].charAt(0) == CONSONANT.charAt(j)) {
 						array[i] = " ";
 					}
 				}

@@ -9,7 +9,7 @@ public class RegexOperations {
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		if(text == null) {
-			//throw new NullStringException(string);
+			//throw new NullStringException(text);
 			//пока не реализовано
 		}
 		if(k <= 0 ) {
@@ -26,7 +26,7 @@ public class RegexOperations {
 	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
 	public static String fixAtoO(String text) {
 		if(text == null) {
-			//throw new NullStringException(string);
+			//throw new NullStringException(text);
 			//пока не реализовано
 		}
 
@@ -52,7 +52,7 @@ public class RegexOperations {
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
 		if(text == null) {
-			//throw new NullStringException(string);
+			//throw new NullStringException(text);
 			//пока не реализовано
 		}
 		

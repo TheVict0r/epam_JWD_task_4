@@ -6,7 +6,7 @@ public class CharArrayOperations {
 		// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			//пока не реализовано
 		}
 		if (k <= 0) {
@@ -53,7 +53,7 @@ public class CharArrayOperations {
 	public static String fixAtoO(String text) {
 		
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			//пока не реализовано
 		}
 		
@@ -75,7 +75,7 @@ public class CharArrayOperations {
 	public static String replaceByLength(String text, int wordLength, String substring) {
 
 		if (text == null) {
-			// throw new NullStringException(string);
+			// throw new NullStringException(text);
 			// пока не реализовано
 		}
 
@@ -120,6 +120,11 @@ public class CharArrayOperations {
 	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
+		if (text == null) {
+			// throw new NullStringException(text);
+			// пока не реализовано
+		}
+
 		char[] array = text.toCharArray();
 		char[] newArray = new char[array.length];
 		int idx = 0;
@@ -138,12 +143,52 @@ public class CharArrayOperations {
 	}
 	
 	
-	//-5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	// -5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
-		
-		return null;
-	}
+		if (text == null) {
+			// throw new NullStringException(text);
+			// пока не реализовано
+		}
 
-	
-	
+		if (wordLength <= 0) {
+			// throw new IncorrectLengthException("Length can't be less than zero");
+			// пока не реализовано
+		}
+
+		char[] textArray = text.toCharArray();
+		char[] bigBuffer = new char[textArray.length];
+		final char[] CONSONANT = { 'Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'Х',
+				'Ц', 'Ч', 'Ш', 'Щ', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х',
+				'ц', 'ч', 'ш', 'щ' };
+		
+		StringBuilder builder = new StringBuilder();
+		int count = 0;
+
+		for (int i = 0; i < textArray.length; i++) {
+			bigBuffer[count] = textArray[i];
+			count++;
+			if (textArray[i] == ' ' || i == textArray.length - 1) {
+				char[] oneWord = new char[count];
+				for (int j = 0; j < oneWord.length; j++) {
+					oneWord[j] = bigBuffer[j];
+				}
+
+				boolean firstLetterConsonant = false;
+				for(int k = 0; k < CONSONANT.length; k++) {
+					if(oneWord[0] == CONSONANT[k]) {
+						firstLetterConsonant = true;
+					}
+				}
+				
+				if(!(count - 1 == wordLength && firstLetterConsonant)) {
+					builder.append(oneWord);
+				}
+				
+				count = 0;
+			}
+
+		}
+		String result = new String(builder);
+		return result;
+	}
 }
