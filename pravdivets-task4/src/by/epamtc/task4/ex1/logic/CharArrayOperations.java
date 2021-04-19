@@ -2,7 +2,7 @@ package by.epamtc.task4.ex1.logic;
 
 public class CharArrayOperations {
 
-		// +-1-В каждом слове k-ю букву заменить заданным символом.
+		// +1-В каждом слове k-ю букву заменить заданным символом.
 		// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		if (text == null) {
