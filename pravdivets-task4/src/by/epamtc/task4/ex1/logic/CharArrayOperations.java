@@ -103,7 +103,7 @@ public class CharArrayOperations {
 					oneWord[j] = bigBuffer[j];
 				}
 
-				if (count - 1 != wordLength) {
+				if (oneWord.length - 1 != wordLength) {
 					builder.append(oneWord);
 				} else {
 					builder.append(substring);
@@ -127,14 +127,14 @@ public class CharArrayOperations {
 		char[] array = text.toCharArray();
 		char[] newArray = new char[array.length];
 		int idx = 0;
-		char[] letters = { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р',
+		char[] alphabet = { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р',
 				'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', ' ', 'а', 'б', 'в', 'г', 'д',
 				'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш',
 				'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я' };
 
 		for (int i = 0; i < array.length; i++) {
-			for (int j = 0; j < letters.length; j++) {
-				if (array[i] == letters[j]) {
+			for (int j = 0; j < alphabet.length; j++) {
+				if (array[i] == alphabet[j]) {
 					newArray[idx] = array[i];
 					idx++;
 				}
