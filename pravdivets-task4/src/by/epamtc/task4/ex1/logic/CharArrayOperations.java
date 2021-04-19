@@ -17,47 +17,33 @@ public class CharArrayOperations {
 		
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
-		//char[] resultArr = new char[textArray.length];
-		//int resIdx = 0;
+		
 		StringBuilder builder = new StringBuilder();
 		int count = 0;
 		
-		for(int i = 0; i < textArray.length; i++) {
+		for (int i = 0; i < textArray.length; i++) {
 			bigBuffer[count] = textArray[i];
 			count++;
-			if(textArray[i] == ' ' || i == textArray.length - 1) {
-				char[] oneWord = new char[count - 1];
-				for(int j = 0; j < oneWord.length; j++) {
+			if (textArray[i] == ' ' || i == textArray.length - 1) {
+				char[] oneWord = new char[count];
+				for (int j = 0; j < oneWord.length; j++) {
 					oneWord[j] = bigBuffer[j];
 				}
-				
-				if(oneWord.length >= k) {
-					for(int h = k - 1; h < oneWord.length; h += k) {
+
+				if (oneWord.length - 1 >= k) {
+					for (int h = k - 1; h < oneWord.length - 1; h += k) {
 						oneWord[h] = ch;
 					}
-				}	
+					
+				} 
 				
 				String word = new String(oneWord);
-				builder.append(word);
-				builder.append(" ");
-				count = 0;
-				
-//					for(int g = resIdx, m = 0; g < (resIdx + oneWord.length); g++, m++) {
-//							resultArr[g] = oneWord[m];
-//						}
-//						resultArr[resIdx + oneWord.length] = ' '; 
-//						resIdx += oneWord.length + 1;
-//						count = 0;
-						
+					builder.append(word);
+					count = 0;
 				}
-				
 			}
 		
-		
-		
 		String result = new String(builder);
-		
-		
 		
 		return result;
 	}
