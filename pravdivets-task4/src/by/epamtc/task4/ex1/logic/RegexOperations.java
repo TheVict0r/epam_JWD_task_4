@@ -25,7 +25,7 @@ public class RegexOperations {
 		return null;
 	}
 
-	//-2-В тексте после буквы Р, если она не последняя в слове, 
+	//+2-В тексте после буквы Р, если она не последняя в слове, 
 	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
 	public static String fixAtoO(String text) {
 		if(text == null) {
@@ -33,9 +33,15 @@ public class RegexOperations {
 			//пока не реализовано
 		}
 
-		//Pattern pattern = Pattern.compile(ар | Ар);
+		Pattern pattern1 = Pattern.compile("ра");
+		Matcher matcher1 = pattern1.matcher(text);
+		text = matcher1.replaceAll("ро");
 		
-		return null;
+		Pattern pattern2 = Pattern.compile("Ра");
+		Matcher matcher2 = pattern2.matcher(text);
+		text = matcher2.replaceAll("Ро");
+
+		return text;
 	}
 	
 	//-3-В тексте слова заданной длины заменить указанной подстрокой, 
@@ -52,11 +58,16 @@ public class RegexOperations {
 			//throw new NullStringException(string);
 			//пока не реализовано
 		}
-		Pattern pattern = Pattern.compile("\\p{Punct}|\\d");
+		
+		Pattern pattern = Pattern.compile("[^А-Яа-я]");
 		Matcher matcher = pattern.matcher(text);
 		
 		String result = "";
-		result = matcher.replaceAll("");
+		result = matcher.replaceAll(" ");
+		
+		Pattern spacePattern = Pattern.compile("\\s{2,}");
+		Matcher spaceMatcher = spacePattern.matcher(result);
+		result = spaceMatcher.replaceAll(" ");
 		
 		return result;
 	}

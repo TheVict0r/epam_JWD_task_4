@@ -21,17 +21,39 @@ public class Main {
 //		}
 //		
 //		System.out.println(text);
-		
-		String text = "В начале 2020 года, $ & по данным Белстата, в Белараси праживало 9 410 259 человек, а за двенадцать месяцев количество населения в нашей стране снизилось до 9 349 645 жителей";
 
-		System.out.println(StringOperations.fixAtoO(text));
 		
-//		System.out.println(StringOperations.deleteСonsonantWords(text, 6));
-//		System.out.println(StringOperations.replaceByStep(text, 3, 'Ы'));
+		//ex1
+		String byStep = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
+		System.out.println("ex 1 - String -    " + StringOperations.replaceByStep(byStep, 6, 'Ы'));
+		System.out.println("ex 1 - CharArray - " + CharArrayOperations.replaceByStep(byStep, 6, 'Ы'));
+		System.out.println();
 		
-//		System.out.println(CharArrayOperations.fixAtoO(text));
-//
-//		System.out.println(RegexOperations.remove(text));
+		//ex2
+		String textAandO = "Карапуз ракета гитара ветер.";
+		System.out.println("ex 2 - String -    " + StringOperations.fixAtoO(textAandO));
+		System.out.println("ex 2 - CharArray - " + CharArrayOperations.fixAtoO(textAandO));
+		System.out.println("ex 2 - Regex -     " + RegexOperations.fixAtoO(textAandO));
+		System.out.println();
+
+		//ex3
+		String byLength = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
+		System.out.println("ex 3 - String -    " + StringOperations.replaceByLength(byLength, 5, "[цензура]"));
+		System.out.println();
+
+		
+		//ex4
+		String forRemove = "Температура воздуха минимальная ночью +1…6°С, максимальная днем +7…13°С, по западу до +15°С.";
+		System.out.println("ex 4 - String -    " + StringOperations.remove(forRemove));
+		System.out.println("ex 4 - CharArray - " + CharArrayOperations.remove(forRemove));
+		System.out.println("ex 4 - Regex -     " + RegexOperations.remove(forRemove));
+		System.out.println();
+
+		//ex5
+		String consonant = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
+		System.out.println("ex 5 - String -    " + StringOperations.deleteСonsonantWords(consonant, 3));
+		
+
 		
 		
 		

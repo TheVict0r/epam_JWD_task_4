@@ -46,7 +46,7 @@ public class StringOperations {
 			// throw new NullStringException(string);
 			// пока не реализовано
 		}
-
+			//кириллица
 			text = text.replaceAll("ра", "ро");
 			text = text.replaceAll("Ра", "Ро");
 			
@@ -58,7 +58,7 @@ public class StringOperations {
 	
 	//+3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
-	public static String replaseByLength(String text, int wordLength, String substring) {
+	public static String replaceByLength(String text, int wordLength, String substring) {
 		
 		if (text == null) {
 			// throw new NullStringException(string);
@@ -85,11 +85,28 @@ public class StringOperations {
 	}
 	
 	
-	//--4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
+	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
+	
+		if (text == null) {
+			// throw new NullStringException(string);
+			//пока не реализовано
+		}
+
+		StringBuilder builder = new StringBuilder();
+		String letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+		for(int i = 0; i < text.length(); i++) {
+			for(int j = 0; j < letters.length(); j++) {
+				if(text.charAt(i) == letters.charAt(j)) {
+					builder.append(text.charAt(i));
+				}
+			}
+		}
 		
-		return null;
+		text = builder.toString();
+		
+		return text;
 	}
 
 	
@@ -122,7 +139,7 @@ public class StringOperations {
 		}
 		
 		String result;
-		result = builder.toString().replaceAll("   ", " ");
+		result = builder.toString().replaceAll("  ", "");
 		
 		return result;
 	}

@@ -14,17 +14,20 @@ public class CharArrayOperations {
 			//пока не реализовано
 		}
 
-		//=========================
-		//||НЕ УЧЁЛ ОТДЕЛЬНЫЕ СЛОВА
-		//=========================
-		
-		
 		
 		char[] array = text.toCharArray();
-
-		for(int i = k - 1; i < array.length; i += k) {
-			array[i] = ch;
+		int count = -1;
+		
+		for(int i = 0; i < array.length; i++) {
+			count++;
+			if(array[i] == ' ')
+		
+		
+		for(int j = k - 1; j < array.length; j += k) {
+			array[j] = ch;
 		}
+		}
+		
 		
 		String result = new String(array);
 		
@@ -76,11 +79,13 @@ public class CharArrayOperations {
 		
 		int count = 0;
 		for(int i = 0; i < array.length - 1; i++) {
-			
-			if(array[i] == ' ') {
-				if(count == wordLength)
-			
 			count++;
+			if(array[i] == ' ') {
+				if(count - 1 == wordLength) {
+					count = 0;
+				}
+			
+			
 			}
 			
 			
@@ -91,11 +96,24 @@ public class CharArrayOperations {
 	}
 	
 	
-	//-4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
+	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
+		char[] array = text.toCharArray();
+		char[] newArray = new char[array.length];
+		int idx = 0;
+		char[] letters = {'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', ' ', 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я'};
 		
-		return null;
+		for(int i = 0; i < array.length; i++) {
+			for(int j = 0; j < letters.length; j++) {
+				if(array[i] == letters[j]) {
+					newArray[idx] = array[i];
+					idx++;
+				}
+			}
+		}
+		 String result = new String(newArray);
+		return result;
 	}
 	
 	
