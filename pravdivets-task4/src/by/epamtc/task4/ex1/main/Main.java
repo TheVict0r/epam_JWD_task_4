@@ -25,8 +25,8 @@ public class Main {
 		
 		//ex1
 		String byStep = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
-		System.out.println("ex 1 - String -    " + StringOperations.replaceByStep(byStep, 6, 'Ы'));
-		System.out.println("ex 1 - CharArray - " + CharArrayOperations.replaceByStep(byStep, 6, 'Ы'));
+		System.out.println("ex 1 - String -    " + StringOperations.replaceByStep(byStep, 4, 'Ы'));
+		System.out.println("ex 1 - CharArray - " + CharArrayOperations.replaceByStep(byStep, 4, 'Ы'));
 		System.out.println();
 		
 		//ex2
