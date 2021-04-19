@@ -8,7 +8,7 @@ public class RegexOperations {
 	//--1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
-		//*******Этот метод ещё не готов****************
+		//*******Этот метод еще не готов****************
 		if(text == null) {
 			//throw new NullStringException(text);
 			//пока не реализовано
