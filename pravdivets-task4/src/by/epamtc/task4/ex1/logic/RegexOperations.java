@@ -17,9 +17,6 @@ public class RegexOperations {
 			//пока не реализовано
 		}
 		
-		if(k > text.length()) {
-			return text;
-		}
 
 	
 		return null;

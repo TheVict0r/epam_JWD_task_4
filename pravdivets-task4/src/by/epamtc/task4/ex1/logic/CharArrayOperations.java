@@ -70,45 +70,52 @@ public class CharArrayOperations {
 		return result;
 	}
 	
-	//-3-В тексте слова заданной длины заменить указанной подстрокой, 
-	//длина которой может не совпадать с длиной слова. 
-	public static String replaseByLength(String text, int wordLength, String substring) {
-		
+	// +3-В тексте слова заданной длины заменить указанной подстрокой,
+	// длина которой может не совпадать с длиной слова.
+	public static String replaceByLength(String text, int wordLength, String substring) {
+
 		if (text == null) {
 			// throw new NullStringException(string);
-			//пока не реализовано
-		}
-		
-		if (substring == null) {
-			// throw new NullStringException(substring);
-			//пока не реализовано
+			// пока не реализовано
 		}
 
-		if(wordLength <= 0) {
-			//throw new IncorrectLengthException("Length can't be less than zero");
-			//пока не реализовано
+		if (substring == null) {
+			// throw new NullStringException(substring);
+			// пока не реализовано
 		}
-		
-		char[] array = text.toCharArray();
-		
+
+		if (wordLength <= 0) {
+			// throw new IncorrectLengthException("Length can't be less than zero");
+			// пока не реализовано
+		}
+
+		char[] textArray = text.toCharArray();
+		char[] bigBuffer = new char[textArray.length];
+
+		StringBuilder builder = new StringBuilder();
 		int count = 0;
-		for(int i = 0; i < array.length - 1; i++) {
+
+		for (int i = 0; i < textArray.length; i++) {
+			bigBuffer[count] = textArray[i];
 			count++;
-			if(array[i] == ' ') {
-				if(count - 1 == wordLength) {
-					count = 0;
+			if (textArray[i] == ' ' || i == textArray.length - 1) {
+				char[] oneWord = new char[count];
+				for (int j = 0; j < oneWord.length; j++) {
+					oneWord[j] = bigBuffer[j];
 				}
-			
-			
+
+				if (count - 1 != wordLength) {
+					builder.append(oneWord);
+				} else {
+					builder.append(substring);
+					builder.append(" ");
+				}
+				count = 0;
 			}
-			
-			
 		}
-		
-		return null;
-		
-	}
-	
+		String result = new String(builder);
+		return result;
+	}	
 	
 	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
