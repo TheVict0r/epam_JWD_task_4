@@ -40,6 +40,7 @@ public class Main {
 		String byLength = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
 		System.out.println("ex 3 - String -    " + StringOperations.replaceByLength(byLength, 5, "[цензура]"));
 		System.out.println("ex 3 - CharArray - " + CharArrayOperations.replaceByLength(byLength, 5, "[цензура]"));
+		System.out.println("ex 3 - Regex -     " + RegexOperations.replaceByLength(byLength, 5, "[цензура]"));
 		System.out.println();
 
 		

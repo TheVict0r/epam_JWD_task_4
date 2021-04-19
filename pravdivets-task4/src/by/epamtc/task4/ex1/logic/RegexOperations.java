@@ -41,11 +41,40 @@ public class RegexOperations {
 		return text;
 	}
 	
-	//-3-В тексте слова заданной длины заменить указанной подстрокой, 
+	//+3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
-	public static String replaseByLength(String text, int wordLength, String substring) {
+	public static String replaceByLength(String text, int wordLength, String substring) {
+		if (text == null) {
+			// throw new NullStringException(text);
+			// пока не реализовано
+		}
+
+		if (substring == null) {
+			// throw new NullStringException(substring);
+			// пока не реализовано
+		}
+
+		if (wordLength <= 0) {
+			// throw new IncorrectLengthException("Length can't be less than zero");
+			// пока не реализовано
+		}
+
+		Pattern patternSpace = Pattern.compile("\\s");
+		String[] array = patternSpace.split(text);
 		
-		return null;
+		String regex = "\\W{" + wordLength + "}";
+		
+		StringBuilder builder = new StringBuilder();
+		for (String word : array) {
+			if(Pattern.matches(regex, word)) {
+				word = substring;
+			}
+			builder.append(word).append(" ");
+		}
+		
+		String result = new String(builder);
+		
+		return result;
 	}
 	
 	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
