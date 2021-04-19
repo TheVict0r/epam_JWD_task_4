@@ -8,6 +8,7 @@ public class RegexOperations {
 	//--1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
+		//*******Этот метод ещё не готов****************
 		if(text == null) {
 			//throw new NullStringException(text);
 			//пока не реализовано
@@ -17,9 +18,20 @@ public class RegexOperations {
 			//пока не реализовано
 		}
 		
+		Pattern patternSpace = Pattern.compile("\\s");
+		String[] array = patternSpace.split(text);
+		
 
-	
-		return null;
+		StringBuilder builder = new StringBuilder();
+		
+		for (String word : array) {
+			
+		}
+
+		//String result = new String(builder);
+		String result = "*******Ещё не готово****************";
+		
+		return result;
 	}
 
 	//+2-В тексте после буквы Р, если она не последняя в слове, 
@@ -98,7 +110,7 @@ public class RegexOperations {
 		return result;
 	}
 	
-	//-5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	//+5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		if (text == null) {
 			// throw new NullStringException(text);
@@ -116,6 +128,7 @@ public class RegexOperations {
 		String regex = "[БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщ]{1}\\W{" + (wordLength - 1) + "}";
 
 		StringBuilder builder = new StringBuilder();
+		
 		for (String word : array) {
 			if(Pattern.matches(regex, word)) {
 				word = "";
