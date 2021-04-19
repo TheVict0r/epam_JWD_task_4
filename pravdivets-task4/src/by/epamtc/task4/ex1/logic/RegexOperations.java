@@ -100,8 +100,33 @@ public class RegexOperations {
 	
 	//-5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
+		if (text == null) {
+			// throw new NullStringException(text);
+			// пока не реализовано
+		}
+
+		if (wordLength <= 0) {
+			// throw new IncorrectLengthException("Length can't be less than zero");
+			// пока не реализовано
+		}
+
+		Pattern patternSpace = Pattern.compile("\\s");
+		String[] array = patternSpace.split(text);
 		
-		return null;
+		String regex = "[БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщ]{1}\\W{" + (wordLength - 1) + "}";
+
+		StringBuilder builder = new StringBuilder();
+		for (String word : array) {
+			if(Pattern.matches(regex, word)) {
+				word = "";
+			}
+			builder.append(word).append(" ");
+		}
+		
+		String result; 
+		result = new String(builder).replaceAll("\\s{2,}", " ");
+		
+		return result;
 	}
 	
 	

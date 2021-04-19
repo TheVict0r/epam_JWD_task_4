@@ -55,6 +55,7 @@ public class Main {
 		String consonant = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
 		System.out.println("ex 5 - String -    " + StringOperations.deleteСonsonantWords(consonant, 3));
 		System.out.println("ex 5 - CharArray - " + CharArrayOperations.deleteСonsonantWords(consonant, 3));
+		System.out.println("ex 5 - Regex -     " + RegexOperations.deleteСonsonantWords(consonant, 3));
 		
 
 		
