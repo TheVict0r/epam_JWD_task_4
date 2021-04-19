@@ -39,11 +39,18 @@ public class StringOperations {
 		return result;
 	}
 	
-	//--2-В тексте после буквы Р, если она не последняя в слове, 
-	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
+	// +2-В тексте после буквы Р, если она не последняя в слове,
+	// ошибочно напечатана буква А вместо О. Внести исправления в текст.
 	public static String fixAtoO(String text) {
-		
-		return null;
+		if (text == null) {
+			// throw new NullStringException(string);
+			// пока не реализовано
+		}
+
+			text = text.replaceAll("ра", "ро");
+			text = text.replaceAll("Ра", "Ро");
+			
+		return text;
 	}
 
 	

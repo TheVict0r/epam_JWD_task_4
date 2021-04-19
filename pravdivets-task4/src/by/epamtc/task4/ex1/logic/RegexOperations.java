@@ -28,6 +28,12 @@ public class RegexOperations {
 	//-2-В тексте после буквы Р, если она не последняя в слове, 
 	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
 	public static String fixAtoO(String text) {
+		if(text == null) {
+			//throw new NullStringException(string);
+			//пока не реализовано
+		}
+
+		//Pattern pattern = Pattern.compile(ар | Ар);
 		
 		return null;
 	}
