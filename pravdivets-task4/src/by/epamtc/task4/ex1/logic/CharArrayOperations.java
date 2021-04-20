@@ -161,7 +161,9 @@ public class CharArrayOperations {
 		char[] bigBuffer = new char[textArray.length];
 		final char[] CONSONANT = { 'Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'Х',
 				'Ц', 'Ч', 'Ш', 'Щ', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х',
-				'ц', 'ч', 'ш', 'щ' };
+				'ц', 'ч', 'ш', 'щ', 'B', 'C', 'D', 'F', 'G', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'S', 'T', 'V', 'X', 'Z', 
+				'H', 'R', 'W', 'Y', 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 's', 't', 'v', 'x', 'z', 
+				'h', 'r', 'w', 'y' };
 
 		StringBuilder builder = new StringBuilder();
 		int count = 0;
