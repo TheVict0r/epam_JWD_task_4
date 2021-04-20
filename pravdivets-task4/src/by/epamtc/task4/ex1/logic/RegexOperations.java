@@ -97,8 +97,8 @@ public class RegexOperations {
 			//пока не реализовано
 		}
 		
-		Pattern pattern = Pattern.compile("[^А-Яа-я]");
-		Matcher matcher = pattern.matcher(text);
+		Pattern alphabet = Pattern.compile("[^А-Яа-яA-Za-z]");
+		Matcher matcher = alphabet.matcher(text);
 		
 		String result = "";
 		result = matcher.replaceAll(" ");
@@ -125,7 +125,7 @@ public class RegexOperations {
 		Pattern patternSpace = Pattern.compile("\\s");
 		String[] array = patternSpace.split(text);
 		
-		String regex = "[БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщ]{1}\\W{" + (wordLength - 1) + "}";
+		String regex = "[БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy]{1}\\W{" + (wordLength - 1) + "}";
 
 		StringBuilder builder = new StringBuilder();
 		

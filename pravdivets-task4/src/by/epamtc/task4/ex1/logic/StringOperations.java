@@ -95,10 +95,10 @@ public class StringOperations {
 		}
 
 		StringBuilder builder = new StringBuilder();
-		String letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+		String alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 		for(int i = 0; i < text.length(); i++) {
-			for(int j = 0; j < letters.length(); j++) {
-				if(text.charAt(i) == letters.charAt(j)) {
+			for(int j = 0; j < alphabet.length(); j++) {
+				if(text.charAt(i) == alphabet.charAt(j)) {
 					builder.append(text.charAt(i));
 				}
 			}
@@ -122,7 +122,7 @@ public class StringOperations {
 			//пока не реализовано
 		}
 
-		final String CONSONANT = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщ";
+		final String CONSONANT = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy";
 		StringBuilder builder = new StringBuilder();
 		
 		String[] array = text.split(" ");
