@@ -15,7 +15,7 @@ public class CharArrayOperations {
 			'H', 'R', 'W', 'Y', 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 's', 't', 'v', 'x', 'z', 
 			'h', 'r', 'w', 'y' };
 
-	// +1-В каждом слове k-ю букву заменить заданным символом.
+	// 1-В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		Check.textAndLengthCheck(text, k);
@@ -57,7 +57,7 @@ public class CharArrayOperations {
 		return result;
 	}
 
-	// +2-В тексте после буквы Р, если она не последняя в слове,
+	// 2-В тексте после буквы Р, если она не последняя в слове,
 	// ошибочно напечатана буква А вместо О. Внести исправления в текст.
 	public static String fixAtoO(String text) {
 		Check.textCheck(text);
@@ -74,7 +74,7 @@ public class CharArrayOperations {
 		return result;
 	}
 
-	// +3-В тексте слова заданной длины заменить указанной подстрокой,
+	// 3-В тексте слова заданной длины заменить указанной подстрокой,
 	// длина которой может не совпадать с длиной слова.
 	public static String replaceByLength(String text, int wordLength, String substring) {
 
@@ -109,7 +109,7 @@ public class CharArrayOperations {
 		return result;
 	}
 
-	// +4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами.
+	// 4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами.
 	// Между последовательностями подряд идущих букв оставить хотя бы один пробел.
 	public static String remove(String text) {
 		Check.textCheck(text);
@@ -130,7 +130,7 @@ public class CharArrayOperations {
 		return result;
 	}
 
-	// +5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	// 5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		Check.textAndLengthCheck(text, wordLength);
 
