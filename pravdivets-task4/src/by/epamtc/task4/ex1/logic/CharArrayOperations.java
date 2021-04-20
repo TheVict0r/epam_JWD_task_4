@@ -5,15 +5,13 @@ public class CharArrayOperations {
 	// +1-В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
-		if (text == null) {
-			// throw new NullStringException(text);
-			// пока не реализовано
-		}
-		if (k <= 0) {
-			// throw new IncorrectStepException("Step can't be less than zero");
-			// пока не реализовано
-		}
+		Check.textAndLengthCheck(text, k);
 
+		/*
+		 * строки с 15 по 40 неплохо бы вынести в отдельный метод (DRY), 
+		 * который будет использоваться и в других заданиях ниже, 
+		 * но пока не придумал, как это можно сделать корректно
+		 */
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
 
@@ -49,11 +47,7 @@ public class CharArrayOperations {
 	// +2-В тексте после буквы Р, если она не последняя в слове,
 	// ошибочно напечатана буква А вместо О. Внести исправления в текст.
 	public static String fixAtoO(String text) {
-
-		if (text == null) {
-			// throw new NullStringException(text);
-			// пока не реализовано
-		}
+		Check.textCheck(text);
 
 		char[] array = text.toCharArray();
 
@@ -72,21 +66,9 @@ public class CharArrayOperations {
 	// длина которой может не совпадать с длиной слова.
 	public static String replaceByLength(String text, int wordLength, String substring) {
 
-		if (text == null) {
-			// throw new NullStringException(text);
-			// пока не реализовано
-		}
-
-		if (substring == null) {
-			// throw new NullStringException(substring);
-			// пока не реализовано
-		}
-
-		if (wordLength <= 0) {
-			// throw new IncorrectLengthException("Length can't be less than zero");
-			// пока не реализовано
-		}
-
+		Check.textAndLengthCheck(text, wordLength);
+		Check.textCheck(substring);
+		
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
 
@@ -118,10 +100,7 @@ public class CharArrayOperations {
 	// +4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами.
 	// Между последовательностями подряд идущих букв оставить хотя бы один пробел.
 	public static String remove(String text) {
-		if (text == null) {
-			// throw new NullStringException(text);
-			// пока не реализовано
-		}
+		Check.textCheck(text);
 
 		char[] array = text.toCharArray();
 		char[] newArray = new char[array.length];
@@ -147,15 +126,7 @@ public class CharArrayOperations {
 
 	// +5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
-		if (text == null) {
-			// throw new NullStringException(text);
-			// пока не реализовано
-		}
-
-		if (wordLength <= 0) {
-			// throw new IncorrectLengthException("Length can't be less than zero");
-			// пока не реализовано
-		}
+		Check.textAndLengthCheck(text, wordLength);
 
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];

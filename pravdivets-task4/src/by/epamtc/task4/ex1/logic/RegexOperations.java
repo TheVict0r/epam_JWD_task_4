@@ -9,14 +9,7 @@ public class RegexOperations {
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		//*******Этот метод еще не готов****************
-		if(text == null) {
-			//throw new NullStringException(text);
-			//пока не реализовано
-		}
-		if(k <= 0 ) {
-			//throw new IncorrectStepException("Step can't be less than zero");
-			//пока не реализовано
-		}
+		Check.textAndLengthCheck(text, k);
 		
 		Pattern patternSpace = Pattern.compile("\\s");
 		String[] array = patternSpace.split(text);
@@ -37,10 +30,7 @@ public class RegexOperations {
 	//+2-В тексте после буквы Р, если она не последняя в слове, 
 	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
 	public static String fixAtoO(String text) {
-		if(text == null) {
-			//throw new NullStringException(text);
-			//пока не реализовано
-		}
+		Check.textCheck(text);
 
 		Pattern pattern1 = Pattern.compile("ра");
 		Matcher matcher1 = pattern1.matcher(text);
@@ -56,20 +46,8 @@ public class RegexOperations {
 	//+3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
 	public static String replaceByLength(String text, int wordLength, String substring) {
-		if (text == null) {
-			// throw new NullStringException(text);
-			// пока не реализовано
-		}
-
-		if (substring == null) {
-			// throw new NullStringException(substring);
-			// пока не реализовано
-		}
-
-		if (wordLength <= 0) {
-			// throw new IncorrectLengthException("Length can't be less than zero");
-			// пока не реализовано
-		}
+		Check.textAndLengthCheck(text, wordLength);
+		Check.textCheck(substring);
 
 		Pattern patternSpace = Pattern.compile("\\s");
 		String[] array = patternSpace.split(text);
@@ -92,10 +70,7 @@ public class RegexOperations {
 	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
-		if(text == null) {
-			//throw new NullStringException(text);
-			//пока не реализовано
-		}
+		Check.textCheck(text);
 		
 		Pattern alphabet = Pattern.compile("[^А-Яа-яA-Za-z]");
 		Matcher matcher = alphabet.matcher(text);
@@ -112,15 +87,7 @@ public class RegexOperations {
 	
 	//+5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
-		if (text == null) {
-			// throw new NullStringException(text);
-			// пока не реализовано
-		}
-
-		if (wordLength <= 0) {
-			// throw new IncorrectLengthException("Length can't be less than zero");
-			// пока не реализовано
-		}
+		Check.textAndLengthCheck(text, wordLength);
 
 		Pattern patternSpace = Pattern.compile("\\s");
 		String[] array = patternSpace.split(text);
