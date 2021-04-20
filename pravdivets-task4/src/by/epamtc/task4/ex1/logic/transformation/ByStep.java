@@ -4,7 +4,7 @@ public class ByStep implements Transformation{
 
 	@Override
 	public String transform(char[] oneWord, int length, String substring) {
-		if (oneWord.length - 1 >= length) {
+		if (oneWord.length - 1 >= length) {// 1 это пробел в конце слова, его не трогаем
 			for (int h = length - 1; h < oneWord.length - 1; h += length) {
 				oneWord[h] = substring.charAt(0);
 			}

@@ -14,15 +14,17 @@ public class CharArrayOperations {
 			'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g',
 			'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
+	
+	//этот метод будет использоваться при решении задач 1, 3, 5
 	public static String transformThroughCharArray(String text, int length, String substring, Transformation t) {
 		Check.textAndLengthCheck(text, length);
 		Check.textCheck(substring);
-		
+
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
 
 		StringBuilder builder = new StringBuilder();
-		
+
 		int count = 0;
 
 		for (int i = 0; i < textArray.length; i++) {
@@ -33,15 +35,14 @@ public class CharArrayOperations {
 				for (int j = 0; j < oneWord.length; j++) {
 					oneWord[j] = bigBuffer[j];
 				}
-				
-				String word = t.transform(oneWord, length, substring);
-
-				builder.append(word);
 				count = 0;
+
+				String word = t.transform(oneWord, length, substring);
+				builder.append(word);
 			}
 		}
-		String result; 
-		result = new String (builder);	
+		String result;
+		result = new String(builder);
 		return result;
 	}
 	
