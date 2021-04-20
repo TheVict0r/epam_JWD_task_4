@@ -5,7 +5,7 @@ public class CharArrayOperations {
 	// +1-В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
-		Check.textAndLength(text, k);
+		Check.textAndLengthCheck(text, k);
 
 		/*
 		 * строки с 15 по 40 неплохо бы вынести в отдельный метод (DRY), 
@@ -47,7 +47,7 @@ public class CharArrayOperations {
 	// +2-В тексте после буквы Р, если она не последняя в слове,
 	// ошибочно напечатана буква А вместо О. Внести исправления в текст.
 	public static String fixAtoO(String text) {
-		Check.text(text);
+		Check.textCheck(text);
 
 		char[] array = text.toCharArray();
 
@@ -66,8 +66,8 @@ public class CharArrayOperations {
 	// длина которой может не совпадать с длиной слова.
 	public static String replaceByLength(String text, int wordLength, String substring) {
 
-		Check.textAndLength(text, wordLength);
-		Check.text(substring);
+		Check.textAndLengthCheck(text, wordLength);
+		Check.textCheck(substring);
 		
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
@@ -100,7 +100,7 @@ public class CharArrayOperations {
 	// +4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами.
 	// Между последовательностями подряд идущих букв оставить хотя бы один пробел.
 	public static String remove(String text) {
-		Check.text(text);
+		Check.textCheck(text);
 
 		char[] array = text.toCharArray();
 		char[] newArray = new char[array.length];
@@ -126,7 +126,7 @@ public class CharArrayOperations {
 
 	// +5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
-		Check.textAndLength(text, wordLength);
+		Check.textAndLengthCheck(text, wordLength);
 
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
