@@ -16,7 +16,7 @@ public class CharArrayOperations {
 
 	
 	//этот метод будет использоваться при решении задач 1, 3, 5
-	public static String transformThroughCharArray(String text, int length, String substring, Transformation t) {
+	public static String transformThroughCharArray(String text, int length, String substring, char ch, Transformation t) {
 		Check.textAndLengthCheck(text, length);
 		Check.textCheck(substring);
 
@@ -37,7 +37,7 @@ public class CharArrayOperations {
 				}
 				count = 0;
 
-				String word = t.transform(oneWord, length, substring);
+				String word = t.transform(oneWord, length, substring, ch);
 				builder.append(word);
 			}
 		}
@@ -50,7 +50,7 @@ public class CharArrayOperations {
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		String result;
-		result = transformThroughCharArray(text, k, String.valueOf(ch), new ByStep());
+		result = transformThroughCharArray(text, k, "", ch, new ByStep());
 		return result;
 	}
 	
@@ -75,7 +75,7 @@ public class CharArrayOperations {
 	// длина которой может не совпадать с длиной слова.
 	public static String replaceByLength(String text, int wordLength, String substring) {
 		String result;
-		result = transformThroughCharArray(text, wordLength, substring, new ByLength());
+		result = transformThroughCharArray(text, wordLength, substring, ' ', new ByLength());
 		return result;
 	}
 
@@ -103,7 +103,7 @@ public class CharArrayOperations {
 	// 5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		String result;
-		result = transformThroughCharArray(text, wordLength, "", new ByConsonsnt());
+		result = transformThroughCharArray(text, wordLength, "", ' ', new ByConsonsnt());
 		return result;
 		
 	}

@@ -3,7 +3,7 @@ package by.epamtc.task4.ex1.logic.transformation;
 public class ByLength implements Transformation{
 
 	@Override
-	public String transform(char[] oneWord, int length, String substring) {
+	public String transform(char[] oneWord, int length, String substring, char ch) {
 		
 		String result;
 		

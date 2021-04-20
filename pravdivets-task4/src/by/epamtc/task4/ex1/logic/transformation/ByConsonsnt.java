@@ -11,7 +11,7 @@ public class ByConsonsnt implements Transformation{
 	
 	
 	@Override
-	public String transform(char[] oneWord, int length, String substring) {
+	public String transform(char[] oneWord, int length, String substring, char ch) {
 
 		boolean firstLetterConsonant = false;
 		for (int k = 0; k < CONSONANTS.length; k++) {
