@@ -3,7 +3,7 @@ package by.epamtc.task4.ex1.logic;
 public class StringOperations {
 
 	static final String ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-	static final String CONSONANT = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy";
+	static final String CONSONANTS = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy";
 	
 	// +1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
@@ -51,24 +51,23 @@ public class StringOperations {
 	//+3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
 	public static String replaceByLength(String text, int wordLength, String substring) {
-		
+
 		Check.textAndLengthCheck(text, wordLength);
 		Check.textCheck(substring);
-		
+
+		String[] array = text.split(" ");
 		String result = "";
-		
-			String[] array = text.split(" ");
-			for(int i = 0; i < array.length; i++) {
-				if(array[i].length() == wordLength) {
-					array[i] = substring;
-				}
-				
-				result = result.concat(array[i]).concat(" ");
+
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].length() == wordLength) {
+				array[i] = substring;
 			}
-			
-			return result;
-	}
-	
+
+			result = result.concat(array[i]).concat(" ");
+		}
+
+		return result;
+	}	
 	
 	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
@@ -77,6 +76,7 @@ public class StringOperations {
 		Check.textCheck(text);
 
 		StringBuilder builder = new StringBuilder();
+		
 		for(int i = 0; i < text.length(); i++) {
 			for(int j = 0; j < ALPHABET.length(); j++) {
 				if(text.charAt(i) == ALPHABET.charAt(j)) {
@@ -85,9 +85,10 @@ public class StringOperations {
 			}
 		}
 		
-		text = builder.toString();
+		String result;
+		result = builder.toString();
 		
-		return text;
+		return result;
 	}
 
 	
@@ -101,8 +102,8 @@ public class StringOperations {
 		String[] array = text.split(" ");
 		for(int i = 0; i < array.length; i++) {
 			if(array[i].length() == wordLength) {
-				for(int j = 0; j < CONSONANT.length(); j++) {
-					if(array[i].charAt(0) == CONSONANT.charAt(j)) {
+				for(int j = 0; j < CONSONANTS.length(); j++) {
+					if(array[i].charAt(0) == CONSONANTS.charAt(j)) {
 						array[i] = " ";
 					}
 				}
