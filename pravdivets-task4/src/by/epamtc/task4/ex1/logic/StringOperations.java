@@ -2,6 +2,9 @@ package by.epamtc.task4.ex1.logic;
 
 public class StringOperations {
 
+	static final String ALPHABET = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	static final String CONSONANT = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy";
+	
 	// +1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
@@ -45,8 +48,6 @@ public class StringOperations {
 	}
 
 	
-	
-	
 	//+3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
 	public static String replaceByLength(String text, int wordLength, String substring) {
@@ -76,10 +77,9 @@ public class StringOperations {
 		Check.textCheck(text);
 
 		StringBuilder builder = new StringBuilder();
-		String alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 		for(int i = 0; i < text.length(); i++) {
-			for(int j = 0; j < alphabet.length(); j++) {
-				if(text.charAt(i) == alphabet.charAt(j)) {
+			for(int j = 0; j < ALPHABET.length(); j++) {
+				if(text.charAt(i) == ALPHABET.charAt(j)) {
 					builder.append(text.charAt(i));
 				}
 			}
@@ -96,7 +96,6 @@ public class StringOperations {
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		Check.textAndLengthCheck(text, wordLength);
 
-		final String CONSONANT = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy";
 		StringBuilder builder = new StringBuilder();
 		
 		String[] array = text.split(" ");
