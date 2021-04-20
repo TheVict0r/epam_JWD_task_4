@@ -2,15 +2,28 @@ package by.epamtc.task4.ex1.logic;
 
 public class CharArrayOperations {
 
+	final static char[] ALPHABET = { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О',
+			'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', ' ', 'а', 'б', 'в',
+			'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц',
+			'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
+			'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g',
+			'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
+
+	final static char[] CONSONANTS = { 'Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'Х',
+			'Ц', 'Ч', 'Ш', 'Щ', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х',
+			'ц', 'ч', 'ш', 'щ', 'B', 'C', 'D', 'F', 'G', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'S', 'T', 'V', 'X', 'Z', 
+			'H', 'R', 'W', 'Y', 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 's', 't', 'v', 'x', 'z', 
+			'h', 'r', 'w', 'y' };
+
 	// +1-В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		Check.textAndLengthCheck(text, k);
 
 		/*
-		 * строки с 15 по 40 неплохо бы вынести в отдельный метод (DRY), 
-		 * который будет использоваться и в других заданиях ниже, 
-		 * но пока не придумал, как это можно сделать корректно. Буду думать.
+		 * строки с 28 по 53 неплохо бы вынести в отдельный метод (DRY), который будет
+		 * использоваться и в других заданиях ниже, но пока не придумал, как это можно
+		 * сделать корректно. Буду думать.
 		 */
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
@@ -55,7 +68,6 @@ public class CharArrayOperations {
 			if (array[i] == 'р' && array[i + 1] == 'а') {
 				array[i + 1] = 'о';
 			}
-
 		}
 
 		String result = new String(array);
@@ -105,16 +117,10 @@ public class CharArrayOperations {
 		char[] array = text.toCharArray();
 		char[] newArray = new char[array.length];
 		int idx = 0;
-		char[] alphabet = { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р',
-				'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Ъ', 'Ы', 'Ь', 'Э', 'Ю', 'Я', ' ', 'а', 'б', 'в', 'г', 'д',
-				'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш',
-				'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 
-				'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 
-				'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
 		for (int i = 0; i < array.length; i++) {
-			for (int j = 0; j < alphabet.length; j++) {
-				if (array[i] == alphabet[j]) {
+			for (int j = 0; j < ALPHABET.length; j++) {
+				if (array[i] == ALPHABET[j]) {
 					newArray[idx] = array[i];
 					idx++;
 				}
@@ -130,11 +136,6 @@ public class CharArrayOperations {
 
 		char[] textArray = text.toCharArray();
 		char[] bigBuffer = new char[textArray.length];
-		final char[] CONSONANT = { 'Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'Х',
-				'Ц', 'Ч', 'Ш', 'Щ', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х',
-				'ц', 'ч', 'ш', 'щ', 'B', 'C', 'D', 'F', 'G', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'S', 'T', 'V', 'X', 'Z', 
-				'H', 'R', 'W', 'Y', 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 's', 't', 'v', 'x', 'z', 
-				'h', 'r', 'w', 'y' };
 
 		StringBuilder builder = new StringBuilder();
 		int count = 0;
@@ -149,8 +150,8 @@ public class CharArrayOperations {
 				}
 
 				boolean firstLetterConsonant = false;
-				for (int k = 0; k < CONSONANT.length; k++) {
-					if (oneWord[0] == CONSONANT[k]) {
+				for (int k = 0; k < CONSONANTS.length; k++) {
+					if (oneWord[0] == CONSONANTS[k]) {
 						firstLetterConsonant = true;
 					}
 				}
