@@ -9,7 +9,7 @@ public class RegexOperations {
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		//*******Этот метод еще не готов****************
-		Check.textAndLengthCheck(text, k);
+		Check.textAndLength(text, k);
 		
 		Pattern patternSpace = Pattern.compile("\\s");
 		String[] array = patternSpace.split(text);
@@ -30,7 +30,7 @@ public class RegexOperations {
 	//+2-В тексте после буквы Р, если она не последняя в слове, 
 	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
 	public static String fixAtoO(String text) {
-		Check.textCheck(text);
+		Check.text(text);
 
 		Pattern pattern1 = Pattern.compile("ра");
 		Matcher matcher1 = pattern1.matcher(text);
@@ -46,8 +46,8 @@ public class RegexOperations {
 	//+3-В тексте слова заданной длины заменить указанной подстрокой, 
 	//длина которой может не совпадать с длиной слова. 
 	public static String replaceByLength(String text, int wordLength, String substring) {
-		Check.textAndLengthCheck(text, wordLength);
-		Check.textCheck(substring);
+		Check.textAndLength(text, wordLength);
+		Check.text(substring);
 
 		Pattern patternSpace = Pattern.compile("\\s");
 		String[] array = patternSpace.split(text);
@@ -70,7 +70,7 @@ public class RegexOperations {
 	//+4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
-		Check.textCheck(text);
+		Check.text(text);
 		
 		Pattern alphabet = Pattern.compile("[^А-Яа-яA-Za-z]");
 		Matcher matcher = alphabet.matcher(text);
@@ -87,7 +87,7 @@ public class RegexOperations {
 	
 	//+5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
-		Check.textAndLengthCheck(text, wordLength);
+		Check.textAndLength(text, wordLength);
 
 		Pattern patternSpace = Pattern.compile("\\s");
 		String[] array = patternSpace.split(text);

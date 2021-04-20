@@ -5,7 +5,7 @@ public class StringOperations {
 	// +1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
-		Check.textAndLengthCheck(text, k);
+		Check.textAndLength(text, k);
 
 		String[] array = text.split(" ");
 		StringBuilder resultBuilder = new StringBuilder();
@@ -35,7 +35,7 @@ public class StringOperations {
 	// +2-В тексте после буквы Р, если она не последняя в слове,
 	// ошибочно напечатана буква А вместо О. Внести исправления в текст.
 	public static String fixAtoO(String text) {
-			Check.textCheck(text);
+			Check.text(text);
 
 			//кириллица
 			text = text.replaceAll("ра", "ро");
@@ -51,8 +51,8 @@ public class StringOperations {
 	//длина которой может не совпадать с длиной слова. 
 	public static String replaceByLength(String text, int wordLength, String substring) {
 		
-		Check.textAndLengthCheck(text, wordLength);
-		Check.textCheck(substring);
+		Check.textAndLength(text, wordLength);
+		Check.text(substring);
 		
 		String result = "";
 		
@@ -73,7 +73,7 @@ public class StringOperations {
 	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
 	
-		Check.textCheck(text);
+		Check.text(text);
 
 		StringBuilder builder = new StringBuilder();
 		String alphabet = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
@@ -94,7 +94,7 @@ public class StringOperations {
 	
 	//+5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
-		Check.textAndLengthCheck(text, wordLength);
+		Check.textAndLength(text, wordLength);
 
 		final String CONSONANT = "БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy";
 		StringBuilder builder = new StringBuilder();
