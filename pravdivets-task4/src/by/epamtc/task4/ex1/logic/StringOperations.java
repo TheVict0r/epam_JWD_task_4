@@ -95,7 +95,7 @@ public class StringOperations {
 		}
 
 		StringBuilder builder = new StringBuilder();
-		String letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюя";
+		String letters = "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯ абвгдеёжзийклмнопрстуфхцчшщъыьэюяABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 		for(int i = 0; i < text.length(); i++) {
 			for(int j = 0; j < letters.length(); j++) {
 				if(text.charAt(i) == letters.charAt(j)) {
