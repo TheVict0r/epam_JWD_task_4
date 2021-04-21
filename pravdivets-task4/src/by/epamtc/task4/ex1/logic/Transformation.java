@@ -1,4 +1,4 @@
-package by.epamtc.task4.ex1.logic.transformation;
+package by.epamtc.task4.ex1.logic;
 
 public interface Transformation {
 

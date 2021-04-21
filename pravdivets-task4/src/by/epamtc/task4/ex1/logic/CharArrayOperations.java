@@ -1,10 +1,5 @@
 package by.epamtc.task4.ex1.logic;
 
-import by.epamtc.task4.ex1.logic.transformation.ByConsonsnt;
-import by.epamtc.task4.ex1.logic.transformation.ByLength;
-import by.epamtc.task4.ex1.logic.transformation.ByStep;
-import by.epamtc.task4.ex1.logic.transformation.Transformation;
-
 public class CharArrayOperations {
 
 	final static char[] ALPHABET = { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О',
@@ -15,8 +10,15 @@ public class CharArrayOperations {
 			'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z' };
 
 	
-	//метод transformThroughCharArray и его перегруженные версии  
-	//будут использоваться при решении задач 1, 3, 5
+	final static char[] CONSONANTS = { 'Б', 'В', 'Г', 'Д', 'Ж', 'З', 'Й', 'К', 'Л', 'М', 'Н', 'П', 'Р', 'С', 'Т', 'Ф', 'Х',
+			'Ц', 'Ч', 'Ш', 'Щ', 'б', 'в', 'г', 'д', 'ж', 'з', 'й', 'к', 'л', 'м', 'н', 'п', 'р', 'с', 'т', 'ф', 'х',
+			'ц', 'ч', 'ш', 'щ', 'B', 'C', 'D', 'F', 'G', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'S', 'T', 'V', 'X', 'Z', 
+			'H', 'R', 'W', 'Y', 'b', 'c', 'd', 'f', 'g', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 's', 't', 'v', 'x', 'z', 
+			'h', 'r', 'w', 'y' };
+
+	
+	//метод transformThroughCharArray (точнее его перегруженные версии)  
+	//будет использоваться при решении задач 1, 3, 5
 	public static String transformThroughCharArray(String text, int length, char ch, Transformation t) {
 		return transformThroughCharArray(text, length, "", ch, t);
 	}
@@ -63,7 +65,20 @@ public class CharArrayOperations {
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		String result;
-		result = transformThroughCharArray(text, k, ch, new ByStep());
+		result = transformThroughCharArray(text, k, ch, new Transformation() {
+
+			@Override
+			public String transform(char[] oneWord, int length, String substring, char ch) {
+				if (oneWord.length - 1 >= length) {// 1 это пробел в конце слова, его не трогаем
+					for (int h = length - 1; h < oneWord.length - 1; h += length) {
+						oneWord[h] = ch;
+					}
+				}
+
+				String result = new String(oneWord);
+				return result;
+			}			
+		});
 		return result;
 	}
 	
@@ -88,7 +103,20 @@ public class CharArrayOperations {
 	// длина которой может не совпадать с длиной слова.
 	public static String replaceByLength(String text, int wordLength, String substring) {
 		String result;
-		result = transformThroughCharArray(text, wordLength, substring, new ByLength());
+		result = transformThroughCharArray(text, wordLength, substring, new Transformation() {
+
+			@Override
+			public String transform(char[] oneWord, int length, String substring, char ch) {
+				String result;
+				if (oneWord.length - 1 != length) {
+					result = new String(oneWord);
+				} else {
+					result = substring + " ";
+				}
+				return result;
+			}
+		});
+		
 		return result;
 	}
 
@@ -116,9 +144,28 @@ public class CharArrayOperations {
 	// 5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		String result;
-		result = transformThroughCharArray(text, wordLength, new ByConsonsnt());
+		result = transformThroughCharArray(text, wordLength, new Transformation() {
+
+			@Override
+			public String transform(char[] oneWord, int length, String substring, char ch) {
+
+				boolean firstLetterConsonant = false;
+				for (int k = 0; k < CONSONANTS.length; k++) {
+					if (oneWord[0] == CONSONANTS[k]) {
+						firstLetterConsonant = true;
+					}
+				}
+
+				String result = "";
+				if (!(oneWord.length - 1 == length && firstLetterConsonant)) {
+					result = new String(oneWord);
+				}
+				
+				return result;
+			}
+			
+		});
 		return result;
-		
 	}
 
 	
