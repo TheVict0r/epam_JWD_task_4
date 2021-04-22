@@ -20,19 +20,23 @@ public class CharArrayOperations {
 	//метод transformThroughCharArray (точнее его перегруженные версии)  
 	//будет использоваться при решении задач 1, 3, 5
 	public static String transformThroughCharArray(String text, int length, char ch, Transformation t) {
+		Check.textLengthTransformationCheck(text, length, t);
 		return transformThroughCharArray(text, length, "", ch, t);
 	}
 
 	public static String transformThroughCharArray(String text, int length, String substring, Transformation t) {
+		Check.textLengthTransformationCheck(text, length, t);
+		Check.textCheck(substring);
 		return transformThroughCharArray(text, length, substring, ' ',  t);
 	}
 	
 	public static String transformThroughCharArray(String text, int length, Transformation t) {
+		Check.textLengthTransformationCheck(text, length, t);
 		return transformThroughCharArray(text, length, "", ' ',  t);
 	}
 	
 	public static String transformThroughCharArray(String text, int length, String substring, char ch, Transformation t) {
-		Check.textAndLengthCheck(text, length);
+		Check.textLengthTransformationCheck(text, length, t);
 		Check.textCheck(substring);
 
 		char[] textArray = text.toCharArray();
