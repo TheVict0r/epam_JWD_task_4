@@ -10,44 +10,41 @@ public class RegexOperations {
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		Check.textAndLengthCheck(text, k);
-		
+
 		Pattern spacePattern = Pattern.compile("\\s+");
 		String[] array = spacePattern.split(text);
-		
-		StringBuilder builder = new StringBuilder();
-		
-		//Pattern wordPattern = Pattern.compile("[\\W{" + (k - 1) + "}]");
-		Pattern wordPattern = Pattern.compile("\\W{" + (k) + "}");
-		
-		for (String word : array) {
-			if(word.length() >= k) {
-				Matcher matcher = wordPattern.matcher(word);
-				
-				while(matcher.find()) {
-				String newWord = matcher.group();
-				StringBuilder wordBuilder = new StringBuilder();
-				wordBuilder.append(newWord).delete(newWord.length()-1, newWord.length()).append(ch);
-				//builder.append(wordBuilder);
-				
-				System.out.print(wordBuilder);
-				}
-				
-				//System.out.print(builder);
-				System.out.print(word.substring(word.length()-(word.length() % k)));//окончание слова
-				//builder.append(word.substring(word.length()-(word.length() % k)));
-				//System.out.print(builder);
-				System.out.print(" ");
-			}
-			
-			
-		}
 
-		//String result = new String(builder);
+		StringBuilder builder = new StringBuilder();
+
+		Pattern wordPattern = Pattern.compile("\\W{" + (k) + "}");
+
+		for (String word : array) {
+			if (word.length() >= k) {
+				Matcher matcher = wordPattern.matcher(word);
+
+				while (matcher.find()) {
+					String newWord = matcher.group();
+					StringBuilder wordBuilder = new StringBuilder();
+					wordBuilder.append(newWord).delete(newWord.length() - 1, newWord.length()).append(ch);
+					// builder.append(wordBuilder);
+
+					System.out.print(wordBuilder);
+				}
+
+				// System.out.print(builder);
+				System.out.print(word.substring(word.length() - (word.length() % k)));// окончание слова
+				// builder.append(word.substring(word.length()-(word.length() % k)));
+				// System.out.print(builder);
+				System.out.print(" ");
+
+				// String result = new String(builder);
+
+			}
+		}
 		String result = "*******Ещё не готово****************";
-		
 		return result;
 	}
-
+	
 	//2-В тексте после буквы Р, если она не последняя в слове, 
 	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
 	public static String fixAtoO(String text) {
