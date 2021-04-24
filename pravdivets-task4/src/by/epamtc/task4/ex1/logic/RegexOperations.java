@@ -1,5 +1,6 @@
 package by.epamtc.task4.ex1.logic;
 
+import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,16 +9,36 @@ public class RegexOperations {
 	//--1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
-		//*******Этот метод еще не готов****************
 		Check.textAndLengthCheck(text, k);
 		
-		Pattern patternSpace = Pattern.compile("\\s");
-		String[] array = patternSpace.split(text);
+		Pattern spacePattern = Pattern.compile("\\s+");
+		String[] array = spacePattern.split(text);
 		
-
 		StringBuilder builder = new StringBuilder();
 		
+		//Pattern wordPattern = Pattern.compile("[\\W{" + (k - 1) + "}]");
+		Pattern wordPattern = Pattern.compile("\\W{" + (k) + "}");
+		
 		for (String word : array) {
+			if(word.length() >= k) {
+				Matcher matcher = wordPattern.matcher(word);
+				
+				while(matcher.find()) {
+				String newWord = matcher.group();
+				StringBuilder wordBuilder = new StringBuilder();
+				wordBuilder.append(newWord).delete(newWord.length()-1, newWord.length()).append(ch);
+				System.out.print(wordBuilder);
+				//builder.append(wordBuilder);
+				
+				}
+				
+				System.out.print(builder);
+				//System.out.print(word.substring(word.length()-(word.length() % k)));//окончание слова
+				//builder.append(word.substring(word.length()-(word.length() % k)));
+				//System.out.print(builder);
+				System.out.print(" ");
+			}
+			
 			
 		}
 
@@ -49,7 +70,7 @@ public class RegexOperations {
 		Check.textAndLengthCheck(text, wordLength);
 		Check.textCheck(substring);
 
-		Pattern patternSpace = Pattern.compile("\\s");
+		Pattern patternSpace = Pattern.compile("\\s+");
 		String[] array = patternSpace.split(text);
 		
 		String regex = "\\W{" + wordLength + "}";
@@ -89,7 +110,7 @@ public class RegexOperations {
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		Check.textAndLengthCheck(text, wordLength);
 
-		Pattern patternSpace = Pattern.compile("\\s");
+		Pattern patternSpace = Pattern.compile("\\s+");
 		String[] array = patternSpace.split(text);
 		
 		String regex = "[БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy]{1}\\W{" + (wordLength - 1) + "}";
