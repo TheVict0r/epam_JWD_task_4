@@ -134,6 +134,6 @@ public class RegexOperations {
 			//throw new NullStringBuilderException(builder);
 			//пока не реализовано
 		}
-		StringOperations.deleteLastChar(builder);
+		StringOperations.deleteLastChar(builder); // можно было и в таком виде вызывать при решении задач
 	}
 }
