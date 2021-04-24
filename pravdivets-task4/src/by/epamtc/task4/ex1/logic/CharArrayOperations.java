@@ -21,6 +21,8 @@ public class CharArrayOperations {
 	// 1. В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
+		Check.textAndLengthCheck(text, k);
+		
 		String result;
 		result = transformThroughCharArray(text, k, ch, new Transformation() {
 
@@ -59,6 +61,10 @@ public class CharArrayOperations {
 	// 3. В тексте слова заданной длины заменить указанной подстрокой, 
 	// длина которой может не совпадать с длиной слова. 
 	public static String replaceByLength(String text, int wordLength, String substring) {
+		
+		Check.textAndLengthCheck(text, wordLength);
+		Check.textCheck(substring);
+		
 		String result;
 		result = transformThroughCharArray(text, wordLength, substring, new Transformation() {
 
@@ -100,6 +106,9 @@ public class CharArrayOperations {
 
 	// 5. Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
+		
+		Check.textAndLengthCheck(text, wordLength);
+	
 		String result;
 		result = transformThroughCharArray(text, wordLength, new Transformation() {
 

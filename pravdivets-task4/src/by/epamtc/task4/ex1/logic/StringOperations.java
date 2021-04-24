@@ -10,8 +10,8 @@ public class StringOperations {
 	public static String replaceByStep(String text, int k, char ch) {
 		Check.textAndLengthCheck(text, k);
 
-		String[] array = text.split(" ");
 		StringBuilder resultBuilder = new StringBuilder();
+		String[] array = text.split(" ");
 
 		for (String word : array) {
 			if (word.length() >= k) {
