@@ -29,6 +29,8 @@ public class StringOperations {
 			resultBuilder.append(word).append(" ");
 		}
 
+		deleteLastChar(resultBuilder);
+		
 		String result;
 		result = resultBuilder.toString();
 
@@ -112,12 +114,20 @@ public class StringOperations {
 			builder.append(array[i]).append(" ");
 		}
 		
+		deleteLastChar(builder);
 		String result;
 		result = builder.toString().replaceAll("  ", "");
 		
 		return result;
 	}
 
-	
+	public static void deleteLastChar(StringBuilder builder) {
+		if (builder == null) {
+			//throw new NullStringBuilderException(builder);
+			//пока не реализовано
+		}
+		builder.deleteCharAt(builder.length()-1);
+	}
+
 	
 }

@@ -89,18 +89,25 @@ public class CharArrayOperations {
 		Check.textCheck(text);
 
 		char[] array = text.toCharArray();
-		char[] newArray = new char[array.length];
+		char[] tmpArray = new char[array.length];
 		int idx = 0;
 
 		for (int i = 0; i < array.length; i++) {
 			for (int j = 0; j < ALPHABET.length; j++) {
 				if (array[i] == ALPHABET[j]) {
-					newArray[idx] = array[i];
+					tmpArray[idx] = array[i];
 					idx++;
 				}
 			}
 		}
-		String result = new String(newArray);
+		
+		//удаляем пустые элементы в конце массива tmpArray, которые образовались из-за удаления символов
+		char[] resultArray = new char[idx];
+		for(int i = 0; i < resultArray.length; i++) {
+			resultArray[i] = tmpArray[i];
+		}
+		
+		String result = new String(resultArray);
 		return result;
 	}
 
