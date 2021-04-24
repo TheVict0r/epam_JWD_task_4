@@ -27,13 +27,13 @@ public class RegexOperations {
 				String newWord = matcher.group();
 				StringBuilder wordBuilder = new StringBuilder();
 				wordBuilder.append(newWord).delete(newWord.length()-1, newWord.length()).append(ch);
-				System.out.print(wordBuilder);
 				//builder.append(wordBuilder);
 				
+				System.out.print(wordBuilder);
 				}
 				
-				System.out.print(builder);
-				//System.out.print(word.substring(word.length()-(word.length() % k)));//окончание слова
+				//System.out.print(builder);
+				System.out.print(word.substring(word.length()-(word.length() % k)));//окончание слова
 				//builder.append(word.substring(word.length()-(word.length() % k)));
 				//System.out.print(builder);
 				System.out.print(" ");
