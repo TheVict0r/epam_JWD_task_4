@@ -5,12 +5,12 @@ import java.util.regex.Pattern;
 
 public class RegexOperations {
 	
-	// 1- В каждом слове k-ю букву заменить заданным символом.
+	// 1. В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		Check.textAndLengthCheck(text, k);
 
-		String[] array = convertToStringArray(text);
+		String[] array = splitIntoWords(text);
 
 		StringBuilder builder = new StringBuilder();
 
@@ -38,8 +38,8 @@ public class RegexOperations {
 		return result;
 	}
 	
-	//2-В тексте после буквы Р, если она не последняя в слове, 
-	//ошибочно напечатана буква А вместо О. Внести исправления в текст. 
+	// 2. В тексте после буквы Р, если она не последняя в слове, 
+	// ошибочно напечатана буква А вместо О. Внести исправления в текст. 
 	public static String fixAtoO(String text) {
 		Check.textCheck(text);
 
@@ -54,13 +54,13 @@ public class RegexOperations {
 		return text;
 	}
 	
-	//3-В тексте слова заданной длины заменить указанной подстрокой, 
-	//длина которой может не совпадать с длиной слова. 
+	// 3. В тексте слова заданной длины заменить указанной подстрокой, 
+	// длина которой может не совпадать с длиной слова. 
 	public static String replaceByLength(String text, int wordLength, String substring) {
 		Check.textAndLengthCheck(text, wordLength);
 		Check.textCheck(substring);
 
-		String[] array = convertToStringArray(text);
+		String[] array = splitIntoWords(text);
 		
 		String regex = "\\W{" + wordLength + "}";
 		
@@ -79,8 +79,8 @@ public class RegexOperations {
 		return result;
 	}
 	
-	//4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
-	//Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
+	// 4. Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
+	// Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
 	public static String remove(String text) {
 		Check.textCheck(text);
 		
@@ -90,6 +90,7 @@ public class RegexOperations {
 		String result = "";
 		result = matcher.replaceAll(" ");
 		
+		//удаляем множественные пробелы - по условию можно и не делать, но так смотрится лучше
 		Pattern spacePattern = Pattern.compile("\\s{2,}");
 		Matcher spaceMatcher = spacePattern.matcher(result);
 		result = spaceMatcher.replaceAll(" ");
@@ -97,11 +98,11 @@ public class RegexOperations {
 		return result;
 	}
 	
-	//5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	// 5. Из текста удалить все слова заданной длины, начинающиеся на согласную букву
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		Check.textAndLengthCheck(text, wordLength);
 
-		String[] array = convertToStringArray(text);
+		String[] array = splitIntoWords(text);
 		
 		String regex = "[БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy]{1}\\W{" + (wordLength - 1) + "}";
 
@@ -118,11 +119,10 @@ public class RegexOperations {
 		
 		String result; 
 		result = new String(builder).replaceAll("\\s{2,}", " ");
-		
 		return result;
 	}
 	
-	public static String[] convertToStringArray(String text) {
+	public static String[] splitIntoWords(String text) {
 		Check.textCheck(text);
 		Pattern patternSpace = Pattern.compile("\\s+");
 		String[] array = patternSpace.split(text);

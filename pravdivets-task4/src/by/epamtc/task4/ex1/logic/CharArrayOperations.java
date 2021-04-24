@@ -17,10 +17,120 @@ public class CharArrayOperations {
 			'h', 'r', 'w', 'y' };
 
 	
+	
+	// 1. В каждом слове k-ю букву заменить заданным символом.
+	// Если k больше длины слова, корректировку не выполнять.
+	public static String replaceByStep(String text, int k, char ch) {
+		String result;
+		result = transformThroughCharArray(text, k, ch, new Transformation() {
+
+			@Override
+			public String transform(char[] oneWord, int length, String substring, char ch) {
+				if (oneWord.length - 1 >= length) {// 1 это пробел в конце слова, его не трогаем
+					for (int h = length - 1; h < oneWord.length - 1; h += length) {
+						oneWord[h] = ch;
+					}
+				}
+
+				String result = new String(oneWord);
+				return result;
+			}			
+		});
+		return result;
+	}
+	
+	// 2. В тексте после буквы Р, если она не последняя в слове, 
+	// ошибочно напечатана буква А вместо О. Внести исправления в текст. 
+	public static String fixAtoO(String text) {
+		Check.textCheck(text);
+
+		char[] array = text.toCharArray();
+
+		for (int i = 0; i < array.length - 1; i++) {
+			if (array[i] == 'р' && array[i + 1] == 'а') {
+				array[i + 1] = 'о';
+			}
+		}
+
+		String result = new String(array);
+		return result;
+	}
+
+	// 3. В тексте слова заданной длины заменить указанной подстрокой, 
+	// длина которой может не совпадать с длиной слова. 
+	public static String replaceByLength(String text, int wordLength, String substring) {
+		String result;
+		result = transformThroughCharArray(text, wordLength, substring, new Transformation() {
+
+			@Override
+			public String transform(char[] oneWord, int length, String substring, char ch) {
+				String result;
+				if (oneWord.length - 1 != length) {
+					result = new String(oneWord);
+				} else {
+					result = substring + " ";
+				}
+				return result;
+			}
+		});
+		
+		return result;
+	}
+
+	// 4. Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами. 
+	// Между последовательностями подряд идущих букв оставить хотя бы один пробел. 
+	public static String remove(String text) {
+		Check.textCheck(text);
+
+		char[] array = text.toCharArray();
+		char[] newArray = new char[array.length];
+		int idx = 0;
+
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 0; j < ALPHABET.length; j++) {
+				if (array[i] == ALPHABET[j]) {
+					newArray[idx] = array[i];
+					idx++;
+				}
+			}
+		}
+		String result = new String(newArray);
+		return result;
+	}
+
+	// 5. Из текста удалить все слова заданной длины, начинающиеся на согласную букву
+	public static String deleteСonsonantWords(String text, int wordLength) {
+		String result;
+		result = transformThroughCharArray(text, wordLength, new Transformation() {
+
+			@Override
+			public String transform(char[] oneWord, int length, String substring, char ch) {
+
+				boolean firstLetterConsonant = false;
+				for (int k = 0; k < CONSONANTS.length; k++) {
+					if (oneWord[0] == CONSONANTS[k]) {
+						firstLetterConsonant = true;
+					}
+				}
+
+				String result = "";
+				if (!(oneWord.length - 1 == length && firstLetterConsonant)) {
+					result = new String(oneWord);
+				}
+				
+				return result;
+			}
+			
+		});
+		return result;
+	}
+
 	//метод transformThroughCharArray (точнее его перегруженные версии)  
-	//будет использоваться при решении задач 1, 3, 5
+	//используются при решении задач 1, 3, 5
 	public static String transformThroughCharArray(String text, int length, char ch, Transformation t) {
 		Check.textLengthTransformationCheck(text, length, t);
+		//Вот про эту проверку спрашивал на занятии. 
+		//Она в том же самом виде делается и в основном методе transformThroughCharArray
 		return transformThroughCharArray(text, length, "", ch, t);
 	}
 
@@ -64,113 +174,5 @@ public class CharArrayOperations {
 		result = new String(builder);
 		return result;
 	}
-	
-	// 1-В каждом слове k-ю букву заменить заданным символом.
-	// Если k больше длины слова, корректировку не выполнять.
-	public static String replaceByStep(String text, int k, char ch) {
-		String result;
-		result = transformThroughCharArray(text, k, ch, new Transformation() {
-
-			@Override
-			public String transform(char[] oneWord, int length, String substring, char ch) {
-				if (oneWord.length - 1 >= length) {// 1 это пробел в конце слова, его не трогаем
-					for (int h = length - 1; h < oneWord.length - 1; h += length) {
-						oneWord[h] = ch;
-					}
-				}
-
-				String result = new String(oneWord);
-				return result;
-			}			
-		});
-		return result;
-	}
-	
-	// 2-В тексте после буквы Р, если она не последняя в слове,
-	// ошибочно напечатана буква А вместо О. Внести исправления в текст.
-	public static String fixAtoO(String text) {
-		Check.textCheck(text);
-
-		char[] array = text.toCharArray();
-
-		for (int i = 0; i < array.length - 1; i++) {
-			if (array[i] == 'р' && array[i + 1] == 'а') {
-				array[i + 1] = 'о';
-			}
-		}
-
-		String result = new String(array);
-		return result;
-	}
-
-	// 3-В тексте слова заданной длины заменить указанной подстрокой,
-	// длина которой может не совпадать с длиной слова.
-	public static String replaceByLength(String text, int wordLength, String substring) {
-		String result;
-		result = transformThroughCharArray(text, wordLength, substring, new Transformation() {
-
-			@Override
-			public String transform(char[] oneWord, int length, String substring, char ch) {
-				String result;
-				if (oneWord.length - 1 != length) {
-					result = new String(oneWord);
-				} else {
-					result = substring + " ";
-				}
-				return result;
-			}
-		});
-		
-		return result;
-	}
-
-	// 4-Из небольшого текста удалить все символы, кроме пробелов, не являющиеся буквами.
-	// Между последовательностями подряд идущих букв оставить хотя бы один пробел.
-	public static String remove(String text) {
-		Check.textCheck(text);
-
-		char[] array = text.toCharArray();
-		char[] newArray = new char[array.length];
-		int idx = 0;
-
-		for (int i = 0; i < array.length; i++) {
-			for (int j = 0; j < ALPHABET.length; j++) {
-				if (array[i] == ALPHABET[j]) {
-					newArray[idx] = array[i];
-					idx++;
-				}
-			}
-		}
-		String result = new String(newArray);
-		return result;
-	}
-
-	// 5-Из текста удалить все слова заданной длины, начинающиеся на согласную букву
-	public static String deleteСonsonantWords(String text, int wordLength) {
-		String result;
-		result = transformThroughCharArray(text, wordLength, new Transformation() {
-
-			@Override
-			public String transform(char[] oneWord, int length, String substring, char ch) {
-
-				boolean firstLetterConsonant = false;
-				for (int k = 0; k < CONSONANTS.length; k++) {
-					if (oneWord[0] == CONSONANTS[k]) {
-						firstLetterConsonant = true;
-					}
-				}
-
-				String result = "";
-				if (!(oneWord.length - 1 == length && firstLetterConsonant)) {
-					result = new String(oneWord);
-				}
-				
-				return result;
-			}
-			
-		});
-		return result;
-	}
-
 	
 }
