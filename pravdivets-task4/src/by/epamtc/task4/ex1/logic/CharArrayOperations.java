@@ -115,15 +115,17 @@ public class CharArrayOperations {
 			@Override
 			public String transform(char[] oneWord, int length, String substring, char ch) {
 
-				boolean firstLetterConsonant = false;
+				//следующий код можно сделать и как отдельный метод, 
+				//но больше он нигде не используется, поэтому оставил в таком виде
+				boolean isFirstLetterConsonant = false; 
 				for (int k = 0; k < CONSONANTS.length; k++) {
 					if (oneWord[0] == CONSONANTS[k]) {
-						firstLetterConsonant = true;
+						isFirstLetterConsonant = true;
 					}
 				}
 
 				String result = "";
-				if (!(oneWord.length - 1 == length && firstLetterConsonant)) {
+				if (!(oneWord.length - 1 == length && isFirstLetterConsonant)) {
 					result = new String(oneWord);
 				}
 				
