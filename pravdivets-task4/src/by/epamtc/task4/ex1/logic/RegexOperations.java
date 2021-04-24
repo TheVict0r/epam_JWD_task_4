@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class RegexOperations {
 	
-	//--1- В каждом слове k-ю букву заменить заданным символом.
+	//1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		Check.textAndLengthCheck(text, k);
@@ -21,26 +21,20 @@ public class RegexOperations {
 		for (String word : array) {
 			if (word.length() >= k) {
 				Matcher matcher = wordPattern.matcher(word);
-
 				while (matcher.find()) {
 					String newWord = matcher.group();
 					StringBuilder wordBuilder = new StringBuilder();
 					wordBuilder.append(newWord).delete(newWord.length() - 1, newWord.length()).append(ch);
-					
-
 					builder.append(wordBuilder);
-					
 				}
-
-
 				builder.append(word.substring(word.length() - (word.length() % k))).append(" ");
-
+			} else {
+				builder.append(word).append(" ");
 			}
 		}
-		
-		System.out.println(builder);
-		
-		String result = "*******Ещё не готово****************";
+
+		String result;
+		result = builder.toString();
 		return result;
 	}
 	
