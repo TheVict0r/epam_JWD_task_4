@@ -1,22 +1,20 @@
 package by.epamtc.task4.ex1.logic;
 
-import java.util.function.Predicate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class RegexOperations {
 	
-	//1- В каждом слове k-ю букву заменить заданным символом.
+	// 1- В каждом слове k-ю букву заменить заданным символом.
 	// Если k больше длины слова, корректировку не выполнять.
 	public static String replaceByStep(String text, int k, char ch) {
 		Check.textAndLengthCheck(text, k);
 
-		Pattern spacePattern = Pattern.compile("\\s+");
-		String[] array = spacePattern.split(text);
+		String[] array = convertToStringArray(text);
 
 		StringBuilder builder = new StringBuilder();
 
-		Pattern wordPattern = Pattern.compile("\\W{" + (k) + "}");
+		Pattern wordPattern = Pattern.compile("\\W{" + k + "}");
 
 		for (String word : array) {
 			if (word.length() >= k) {
@@ -24,15 +22,17 @@ public class RegexOperations {
 				while (matcher.find()) {
 					String newWord = matcher.group();
 					StringBuilder wordBuilder = new StringBuilder();
-					wordBuilder.append(newWord).delete(newWord.length() - 1, newWord.length()).append(ch);
+					wordBuilder.append(newWord).delete(newWord.length() - 1, newWord.length()).append(ch);//формируем основную часть слова с добавленным по шагу символом
 					builder.append(wordBuilder);
 				}
-				builder.append(word.substring(word.length() - (word.length() % k))).append(" ");
+				builder.append(word.substring(word.length() - (word.length() % k))).append(" ");//в случае, если есть окончание, которое короче чем k, добавляем его
 			} else {
 				builder.append(word).append(" ");
 			}
 		}
 
+		deleteLastChar(builder);
+		
 		String result;
 		result = builder.toString();
 		return result;
@@ -60,8 +60,7 @@ public class RegexOperations {
 		Check.textAndLengthCheck(text, wordLength);
 		Check.textCheck(substring);
 
-		Pattern patternSpace = Pattern.compile("\\s+");
-		String[] array = patternSpace.split(text);
+		String[] array = convertToStringArray(text);
 		
 		String regex = "\\W{" + wordLength + "}";
 		
@@ -72,6 +71,8 @@ public class RegexOperations {
 			}
 			builder.append(word).append(" ");
 		}
+		
+		deleteLastChar(builder);
 		
 		String result = new String(builder);
 		
@@ -100,8 +101,7 @@ public class RegexOperations {
 	public static String deleteСonsonantWords(String text, int wordLength) {
 		Check.textAndLengthCheck(text, wordLength);
 
-		Pattern patternSpace = Pattern.compile("\\s+");
-		String[] array = patternSpace.split(text);
+		String[] array = convertToStringArray(text);
 		
 		String regex = "[БВГДЖЗЙКЛМНПРСТФХЦЧШЩбвгджзйклмнпрстфхцчшщBCDFGJKLMNPQSTVXZHRWYbcdfgjklmnpqstvxzhrwy]{1}\\W{" + (wordLength - 1) + "}";
 
@@ -114,11 +114,26 @@ public class RegexOperations {
 			builder.append(word).append(" ");
 		}
 		
+		deleteLastChar(builder);
+		
 		String result; 
 		result = new String(builder).replaceAll("\\s{2,}", " ");
 		
 		return result;
 	}
 	
+	public static String[] convertToStringArray(String text) {
+		Check.textCheck(text);
+		Pattern patternSpace = Pattern.compile("\\s+");
+		String[] array = patternSpace.split(text);
+		return array;
+	}	
 	
+	public static void deleteLastChar(StringBuilder builder) {
+		if (builder == null) {
+			//throw new NullStringBuilderException(builder);
+			//пока не реализовано
+		}
+		builder.deleteCharAt(builder.length()-1);
+	}
 }
