@@ -98,7 +98,7 @@ public class StringOperations {
 		Check.textAndLengthCheck(text, wordLength);
 
 		StringBuilder builder = new StringBuilder();
-		
+
 		String[] array = text.split(" ");
 		for(int i = 0; i < array.length; i++) {
 			if(array[i].length() == wordLength) {
@@ -117,6 +117,7 @@ public class StringOperations {
 		
 		return result;
 	}
+
 	
 	
 }
