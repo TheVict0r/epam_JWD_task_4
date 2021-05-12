@@ -11,52 +11,59 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-//		String text = "";
-//		
-		//text = TextDataScanner.enterStringFromConsole();
-//		try {
-//			text = TextDataScanner.enterStringFromFile("C:\\file.txt");
-//		} catch (FileNotFoundException e) {
-//			e.printStackTrace();
-//		}
-//		
-//		System.out.println(text);
-
+		//text = TextDataScanner.enterStringFromConsole(); //проверял - работает
+		
+		String text1 = "";
+		try {
+			text1 = TextDataScanner.enterStringFromFile("./src/by/epamtc/task4/ex1/source/text1.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String text2 = "";
+		try {
+			text2 = TextDataScanner.enterStringFromFile("./src/by/epamtc/task4/ex1/source/text2.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		String text3 = "";
+		try {
+			text3 = TextDataScanner.enterStringFromFile("./src/by/epamtc/task4/ex1/source/text3.txt");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
 		
 		//ex1
-		String byStep = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
-		System.out.println("ex 1 - String    - " + StringOperations.replaceByStep(byStep, 4, 'Ы'));
-		System.out.println("ex 1 - CharArray - " + CharArrayOperations.replaceByStep(byStep, 4, 'Ы'));
-		System.out.println("ex 1 - Regex     - " + RegexOperations.replaceByStep(byStep, 4, 'Ы'));
+		System.out.println("ex 1 - String    - " + StringOperations.replaceByStep(text1, 4, 'Ы'));
+		System.out.println("ex 1 - CharArray - " + CharArrayOperations.replaceByStep(text1, 4, 'Ы'));
+		System.out.println("ex 1 - Regex     - " + RegexOperations.replaceByStep(text1, 4, 'Ы'));
 		System.out.println();
 		
 		//ex2
-		String textAandO = "Карапуз ракета гитара ветер.";
-		System.out.println("ex 2 - String    - " + StringOperations.fixAtoO(textAandO));
-		System.out.println("ex 2 - CharArray - " + CharArrayOperations.fixAtoO(textAandO));
-		System.out.println("ex 2 - Regex     - " + RegexOperations.fixAtoO(textAandO));
+		System.out.println("ex 2 - String    - " + StringOperations.fixAtoO(text2));
+		System.out.println("ex 2 - CharArray - " + CharArrayOperations.fixAtoO(text2));
+		System.out.println("ex 2 - Regex     - " + RegexOperations.fixAtoO(text2));
 		System.out.println();
 
 		//ex3
-		String byLength = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
-		System.out.println("ex 3 - String    - " + StringOperations.replaceByLength(byLength, 5, "[цензура]"));
-		System.out.println("ex 3 - CharArray - " + CharArrayOperations.replaceByLength(byLength, 5, "[цензура]"));
-		System.out.println("ex 3 - Regex     - " + RegexOperations.replaceByLength(byLength, 5, "[цензура]"));
+		System.out.println("ex 3 - String    - " + StringOperations.replaceByLength(text1, 5, "[цензура]"));
+		System.out.println("ex 3 - CharArray - " + CharArrayOperations.replaceByLength(text1, 5, "[цензура]"));
+		System.out.println("ex 3 - Regex     - " + RegexOperations.replaceByLength(text1, 5, "[цензура]"));
 		System.out.println();
 
 		
 		//ex4
-		String forRemove = "Температура воздуха минимальная ночью +1…6°С, максимальная днем +7…13°С, по западу до +15°С.";
-		System.out.println("ex 4 - String    - " + StringOperations.remove(forRemove));
-		System.out.println("ex 4 - CharArray - " + CharArrayOperations.remove(forRemove));
-		System.out.println("ex 4 - Regex     - " + RegexOperations.remove(forRemove));
+		System.out.println("ex 4 - String    - " + StringOperations.remove(text3));
+		System.out.println("ex 4 - CharArray - " + CharArrayOperations.remove(text3));
+		System.out.println("ex 4 - Regex     - " + RegexOperations.remove(text3));
 		System.out.println();
 
 		//ex5
-		String consonant = "Я спрятался в лесу и решил на плоты больше не садиться, раз там расхаживают с фонарями взад и вперед.";
-		System.out.println("ex 5 - String    - " + StringOperations.deleteСonsonantWords(consonant, 3));
-		System.out.println("ex 5 - CharArray - " + CharArrayOperations.deleteСonsonantWords(consonant, 3));
-		System.out.println("ex 5 - Regex     - " + RegexOperations.deleteСonsonantWords(consonant, 3));
+		System.out.println("ex 5 - String    - " + StringOperations.deleteСonsonantWords(text1, 3));
+		System.out.println("ex 5 - CharArray - " + CharArrayOperations.deleteСonsonantWords(text1, 3));
+		System.out.println("ex 5 - Regex     - " + RegexOperations.deleteСonsonantWords(text1, 3));
 		
 	}
 
